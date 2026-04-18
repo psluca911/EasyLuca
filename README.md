@@ -63,7 +63,7 @@ docker run -d -p 7860:7860 --name EasyProxy ghcr.io/realbestia1/easyproxy:latest
 **Custom Build:**
 ```bash
 # Build the full version locally
-docker build -t EasyProxy -f Dockerfile.full .
+docker build -t easyproxy -f Dockerfile.full .
 ```
 
 ### 🐍 Direct Python
@@ -669,8 +669,7 @@ docker rm -f EasyProxy
 
 ## 🤝 Contributing
 
-Contributions are welcome! To contribute:
-
+Contributions are welcome! To:
 1. **Fork** the repository
 2. **Create** a branch for changes (`git checkout -b feature/AmazingFeature`)
 3. **Commit** the changes (`git commit -m 'Add some AmazingFeature'`)
