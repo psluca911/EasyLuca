@@ -14,6 +14,5 @@ services:
       - API_PASSWORD=ep
       - PORT=7860
       - FLARESOLVERR_TIMEOUT=30
-      - ENABLE_WARP=false        # Imposta a true per attivare WARP integrato
-      - WARP_LICENSE_KEY=        # Inserisci qui la tua chiave WARP+ (opzionale)
-      # - GLOBAL_PROXY=          # Non più strettamente necessario se WARP è attivo
+      - ENABLE_WARP=true            # Imposta a true per attivare WARP integrato
+      - WARP_LICENSE_KEY=           # Inserisci qui la tua chiave WARP+ (opzionale)
