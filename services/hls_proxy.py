@@ -521,6 +521,11 @@ class HLSProxy:
         - proxy_url: The proxy URL being used, or None for direct connection
         """
         proxy = get_proxy_for_url(url, TRANSPORT_ROUTES, GLOBAL_PROXIES)
+        
+        # Force direct connection for domains that block proxies/WARP
+        if any(d in url for d in ["cinemacity.cc", "cccdn.net"]):
+            proxy = None
+            
         prefer_default_family = "ai.the-sunmoon.site/key/" in url
 
         if proxy:
@@ -2223,7 +2228,7 @@ class HLSProxy:
                     f"📡 [Proxy Stream] Using session{f' via proxy {session_proxy}' if session_proxy else ' (direct)'} for: {stream_url}"
                 )
             # ✅ TLS FINGERPRINT BYPASS: Use curl_cffi for problematic CDNs (CinemaCity)
-            use_curl_cffi = HAS_CURL_CFFI and "cccdn.net" in stream_url
+            use_curl_cffi = HAS_CURL_CFFI and any(d in stream_url for d in ["cccdn.net", "cinemacity.cc"])
             
             if use_curl_cffi:
                 curl_proxy = f"{request.scheme}://{session_proxy}" if session_proxy else None

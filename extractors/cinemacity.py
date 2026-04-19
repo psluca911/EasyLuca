@@ -25,7 +25,7 @@ class CinemaCityExtractor:
         self.request_headers = request_headers
         self.proxies = proxies or []
         self.session = None
-        self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
         self.base_url = "https://cinemacity.cc"
         self.flaresolverr_url = FLARESOLVERR_URL
         self.flaresolverr_timeout = FLARESOLVERR_TIMEOUT
@@ -223,7 +223,7 @@ class CinemaCityExtractor:
         return {
             "destination_url": safe_url,
             "request_headers": {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
                 "Upgrade-Insecure-Requests": "1",
                 "Sec-Fetch-Dest": "document",
                 "Sec-Fetch-Mode": "navigate",
