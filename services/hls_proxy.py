@@ -529,7 +529,7 @@ class HLSProxy:
         # Cinemacity, VixSrc, etc.
         bypass_patterns = [
             "vavoo.to", "vcdn.io", "ngolpdkyoctjcddxshli469r.org",
-            "citysync.club", "cccdn.net", "cinemacity.cc",
+            "cccdn.net", "cinemacity.cc",
             "lokke.app", "mediahubmx", "vavoo.tv"
         ]
         
@@ -2342,7 +2342,10 @@ class HLSProxy:
                     async def __aexit__(self, exc_type, exc, tb):
                         if self.session: await self.session.__aexit__(exc_type, exc, tb)
 
-                resp_ctx = CurlContextManager(stream_url, headers, curl_proxy)
+                # Filter headers for curl_cffi: keep only essential media headers
+                # curl_cffi will provide its own Chrome-compliant UA and standard headers.
+                filtered_headers = {k: v for k, v in headers.items() if k.lower() in ["range", "accept-encoding", "connection"]}
+                resp_ctx = CurlContextManager(stream_url, filtered_headers, curl_proxy)
             else:
                 resp_ctx = session.get(stream_url, headers=headers, ssl=not disable_ssl)
 
