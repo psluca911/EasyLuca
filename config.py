@@ -125,9 +125,6 @@ def get_proxy_for_url(url: str, transport_routes: list, global_proxies: list) ->
 
     normalized_url = url.lower()
 
-    if "direct=1" in url or "warp=off" in url or "warp_bypass=1" in url:
-        return None
-
     if any(domain in normalized_url for domain in WARP_EXCLUDE_DOMAINS):
         return None
 
@@ -205,24 +202,36 @@ WARP_PROXY_URL = os.environ.get("WARP_PROXY_URL", "").strip() or None
 
 _default_warp_exclude_domains = [
     "cinemacity.cc",
+    "*.cinemacity.cc",
     "cccdn.net",
+    "*.cccdn.net",
     "strem.fun",
+    "*.strem.fun",
     "torrentio.strem.fun",
     "real-debrid.com",
+    "*.real-debrid.com",
     "realdebrid.com",
+    "*.realdebrid.com",
     "api.real-debrid.com",
     "premiumize.me",
+    "*.premiumize.me",
     "www.premiumize.me",
     "alldebrid.com",
+    "*.alldebrid.com",
     "api.alldebrid.com",
     "debrid-link.com",
+    "*.debrid-link.com",
     "debridlink.com",
+    "*.debridlink.com",
     "api.debrid-link.com",
     "torbox.app",
+    "*.torbox.app",
     "api.torbox.app",
     "offcloud.com",
+    "*.offcloud.com",
     "api.offcloud.com",
     "put.io",
+    "*.put.io",
     "api.put.io",
 ]
 WARP_EXCLUDE_DOMAINS = [
@@ -249,7 +258,7 @@ MAX_RECORDING_DURATION = int(os.environ.get("MAX_RECORDING_DURATION", 28800))
 RECORDINGS_RETENTION_DAYS = int(os.environ.get("RECORDINGS_RETENTION_DAYS", 7))
 
 # --- Version/Mode Configuration ---
-APP_VERSION = "2.5.80"
+APP_VERSION = "2.5.81"
 
 _has_solvers = os.path.exists("flaresolverr") and (
     os.path.exists("byparr") or os.path.exists("byparr_src")

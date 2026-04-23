@@ -1374,11 +1374,7 @@ class HLSProxy:
 
                 # Se l'estrattore richiede il bypass di WARP, aggiungiamo il flag all'URL
                 if warp_bypass:
-                    if "?" in stream_url:
-                        stream_url += "&direct=1"
-                    else:
-                        stream_url += "?direct=1"
-                    logger.info(f"⚡ WARP Bypass forced for this stream: {stream_url[:50]}...")
+                    logger.info(f"⚡ WARP Bypass requested for this stream: {stream_url[:50]}...")
 
                 if force_disable_ssl:
                     if "?" in stream_url:
