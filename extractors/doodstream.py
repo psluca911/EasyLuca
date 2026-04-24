@@ -55,7 +55,10 @@ class DoodStreamExtractor:
         # --- PHASE 1: cloudscraper (ONLY) ---
         try:
             logger.info(f"🚀 DoodStream: Trying cloudscraper extraction for {embed_url}")
-            scraper = cloudscraper.create_scraper()
+            # Delay settings to improve bypass success
+            scraper = cloudscraper.create_scraper(
+                delay=5
+            )
             # cloudscraper is synchronous, so we run it in a thread
             r = await asyncio.to_thread(scraper.get, embed_url, headers={"User-Agent": _DOOD_UA}, timeout=30)
             
