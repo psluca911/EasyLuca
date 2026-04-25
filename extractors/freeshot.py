@@ -71,6 +71,7 @@ class FreeshotExtractor:
                     try:
                         logger.debug(f"FreeshotExtractor: Uso FlareSolverr per estrarre codice da {url}")
                         content = await smart_request("request.get", url, headers=self.base_headers, proxies=self.proxies)
+                        content = content["html"] if isinstance(content, dict) and content.get("html") else content
                     except Exception as e:
                         logger.warning(f"FreeshotExtractor: FlareSolverr fallito per freeshot.live: {e}")
                 
